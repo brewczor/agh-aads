@@ -180,4 +180,13 @@ public class ListGraph<N, E> implements Graph<N, E> {
 		return false;
 	}
 
+	@Override
+	public List<N> getNodes() {
+		List<N> resultList = new ArrayList<N>();
+		for(N n : neigMap.keySet()) {
+			resultList.add(n);
+		}
+		return resultList;
+	}
+
 }

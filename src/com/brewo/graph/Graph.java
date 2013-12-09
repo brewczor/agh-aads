@@ -55,5 +55,9 @@ public interface Graph<N, E> {
 	public int countNodes();
 	public int countEdges();
 	
+	public List<N> getNodes();
+	
+	public int getDistance(N n1, N n2);
+	
 	
 }

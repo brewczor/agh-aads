@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import com.brewo.graph.Graph;
 import com.brewo.graph.ListGraph;
-import com.brewo.graph.MatrixGraph;
 
 public class ListGraphTest {
 

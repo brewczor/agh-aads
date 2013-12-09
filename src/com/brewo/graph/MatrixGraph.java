@@ -276,6 +276,29 @@ public class MatrixGraph<N, E> implements Graph<N, E> {
 		}
 	}
 	
+	@Override
+	public List<N> getNodes() {
+		List<N> resultList = new ArrayList<N>();
+		for(N n : matrix.keySet()) {
+			resultList.add(n);
+		}
+		return resultList;
+	}
+	
+	@Override
+	public int getDistance(N n1, N n2) {
+		List<E> eList = matrix.get(n1).get(n2);
+		
+		int min = 0 ;
+		for(E e : eList) {
+			int w = edgeMap.get(e).getWeight();
+			if(w < min) {
+				min = w;
+			}
+		}
+		return min;
+	}
+	
 	
 //	N begin = null;
 //	N end = null;
