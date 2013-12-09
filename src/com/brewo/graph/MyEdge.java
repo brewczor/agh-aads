@@ -2,15 +2,17 @@ package com.brewo.graph;
 
 public class MyEdge<N, E> implements Edge<N, E>{
 	
+	E insideObject;
 	N fromNode;
 	N toNode;
 	int weight;
 	
-	public MyEdge(N fromNode, N toNode) {
-		this(fromNode, toNode, 1);
+	public MyEdge(E insideObject, N fromNode, N toNode) {
+		this(insideObject, fromNode, toNode, 1);
 	}
 	
-	public MyEdge(N fromNode, N toNode, int weigth) {
+	public MyEdge(E insideObject, N fromNode, N toNode, int weigth) {
+		this.insideObject = insideObject;
 		this.fromNode = fromNode;
 		this.toNode = toNode;
 		this.weight = weigth;
@@ -31,4 +33,8 @@ public class MyEdge<N, E> implements Edge<N, E>{
 		return weight;
 	}
 
+	@Override
+	public E getInsideObject() {
+		return insideObject;
+	}
 }
