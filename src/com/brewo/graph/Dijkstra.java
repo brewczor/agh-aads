@@ -20,12 +20,16 @@ public class Dijkstra<N, E> {
 		this.g = g;
 		startNode = sNode;
 		dNodeMap = generateDNodes(g);
+		
+//		for(N n : dNodeMap.keySet()) {
+//			System.out.println(n);
+//		}
 	}
 	
 	private Map<N, DNode<N>> generateDNodes(Graph<N,E> g) {
 		Map<N, DNode<N>> resultMap = new HashMap<N, DNode<N>>();
 		for(N n : g.getNodes()) {
-			resultMap.put(n, new DNode(n));
+			resultMap.put(n, new DNode<N>(n));
 		}
 		
 		return resultMap;
@@ -36,8 +40,9 @@ public class Dijkstra<N, E> {
 	public void run() {
 		DNode<N> sNode = dNodeMap.get(startNode);
 		dNodeMap.remove(startNode);
-		sNode.setDist(0);
 		
+		sNode.setDist(0);
+		//sNode.setVisited(true);
 		Q.add(sNode);
 		
 		while(!Q.isEmpty()) {
@@ -45,9 +50,11 @@ public class Dijkstra<N, E> {
 			//N n = ;
 			
 			for(N node : g.getAdjoiningNodes(currN.getToNode())) {
-				int alt = currN.getDist() + g.getDistance(currN.getToNode(), node); //uzuppelnic
-				
+				double alt = currN.getDist() + g.getDistance(currN.getToNode(), node); //uzuppelnic
+				System.out.println("Distance:" + alt);
+				System.out.println("|" + node + "|");
 				DNode v = dNodeMap.get(node);
+				if(v != null) {
 				if(alt < v.getDist()) {
 					v.setDist(alt);
 					v.setPrev(currN.getToNode());
@@ -55,21 +62,36 @@ public class Dijkstra<N, E> {
 						Q.add(v);
 					}
 				}
+				}
 			}
 		}
+		
+		printResult();
+		
 	}
 	
+	private void printResult() {
+		for(DNode<N> d : dNodeMap.values()) {
+			System.out.println("d node: " + d.getToNode() + " dist: " + d.getDist());
+		}
+	}
 	private DNode<N> getSmallestDistanceDNode() {
-		int min = Integer.MAX_VALUE;
-		DNode minDNode = null;
-		for(DNode d : Q) {
-			if(d.getDist() < min) {
+		double min = Double.POSITIVE_INFINITY;
+		DNode<N> minDNode = null;
+		for(DNode<N> d : Q) {
+			System.out.println("min: " + min);
+			System.out.println("d.getDist" + d.getDist());
+			System.out.println(d.getDist() <= min);
+			System.out.println(d.visited);
+			if(d.getDist() <= min && !d.visited) {
 				min = d.getDist();
 				minDNode = d;
 			}
 		}
+		
+		//minDNode.setVisited(true);
 		Q.remove(minDNode);
-		minDNode.setVisited(true);
+		
 		return minDNode;
 	}
 	
@@ -83,11 +105,11 @@ public class Dijkstra<N, E> {
 			this.toNode = toNode;
 		}
 
-		public int getDist() {
+		public double getDist() {
 			return dist;
 		}
 
-		public void setDist(int dist) {
+		public void setDist(double dist) {
 			this.dist = dist;
 		}
 
@@ -108,7 +130,7 @@ public class Dijkstra<N, E> {
 		}
 
 		public N toNode = null;
-		public int dist = Integer.MAX_VALUE;
+		public double dist = Double.MAX_VALUE;
 		public boolean visited = false;
 		public N prev = null;
 		

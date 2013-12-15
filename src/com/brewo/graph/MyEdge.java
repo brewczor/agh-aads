@@ -5,13 +5,13 @@ public class MyEdge<N, E> implements Edge<N, E>{
 	E insideObject;
 	N fromNode;
 	N toNode;
-	int weight;
+	double weight;
 	
 	public MyEdge(E insideObject, N fromNode, N toNode) {
 		this(insideObject, fromNode, toNode, 1);
 	}
 	
-	public MyEdge(E insideObject, N fromNode, N toNode, int weigth) {
+	public MyEdge(E insideObject, N fromNode, N toNode, double weigth) {
 		this.insideObject = insideObject;
 		this.fromNode = fromNode;
 		this.toNode = toNode;
@@ -29,7 +29,7 @@ public class MyEdge<N, E> implements Edge<N, E>{
 	}
 
 	@Override
-	public int getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 

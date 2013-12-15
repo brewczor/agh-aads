@@ -31,7 +31,7 @@ public interface Graph<N, E> {
 	
 	public void addEdge(E e, N n1, N n2);
 	
-	public void addEdge(E e, N n1, N n2, int weight);
+	public void addEdge(E e, N n1, N n2, double weight);
 	
 	public void deleteEdge(E e);
 	
@@ -57,7 +57,7 @@ public interface Graph<N, E> {
 	
 	public List<N> getNodes();
 	
-	public int getDistance(N n1, N n2);
+	public double getDistance(N n1, N n2);
 	
 	
 }

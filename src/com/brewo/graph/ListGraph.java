@@ -69,11 +69,11 @@ public class ListGraph<N, E> implements Graph<N, E> {
 
 	@Override
 	public void addEdge(E e, N n1, N n2) {
-		addEdge(e, n1, n2, 1);
+		addEdge(e, n1, n2, 1.0);
 	}
 
 	@Override
-	public void addEdge(E e, N n1, N n2, int weight) {
+	public void addEdge(E e, N n1, N n2, double weight) {
 		if (n1 == null || n2 == null || e == null || edgeMap.containsKey(e)) {
 			return;
 		}
@@ -187,6 +187,22 @@ public class ListGraph<N, E> implements Graph<N, E> {
 			resultList.add(n);
 		}
 		return resultList;
+	}
+
+	@Override
+	public double getDistance(N n1, N n2) {
+		double min = Double.MAX_VALUE;
+		for(Edge<N,E> e : edgeMap.values()) {
+			if(n1.equals(e.getFromNode()) && n2.equals(e.getToNode())) {
+				if(e.getWeight() < min) {
+					min = e.getWeight();
+				}
+			}
+		}
+		
+
+		return min;
+
 	}
 
 }

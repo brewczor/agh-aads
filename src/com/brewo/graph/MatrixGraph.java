@@ -76,7 +76,7 @@ public class MatrixGraph<N, E> implements Graph<N, E> {
 	}
 
 	@Override
-	public void addEdge(E e, N n1, N n2, int weight) {
+	public void addEdge(E e, N n1, N n2, double weight) {
 		if (e == null || containsEdge(e))
 			return;
 
@@ -286,12 +286,12 @@ public class MatrixGraph<N, E> implements Graph<N, E> {
 	}
 	
 	@Override
-	public int getDistance(N n1, N n2) {
+	public double getDistance(N n1, N n2) {
 		List<E> eList = matrix.get(n1).get(n2);
 		
-		int min = 0 ;
+		double min = Double.POSITIVE_INFINITY ;
 		for(E e : eList) {
-			int w = edgeMap.get(e).getWeight();
+			double w = edgeMap.get(e).getWeight();
 			if(w < min) {
 				min = w;
 			}

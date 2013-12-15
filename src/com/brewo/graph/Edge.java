@@ -4,6 +4,6 @@ public interface Edge<N, E> {
 
 	public N getFromNode();
 	public N getToNode();
-	public int getWeight();
+	public double getWeight();
 	public E getInsideObject();
 }
