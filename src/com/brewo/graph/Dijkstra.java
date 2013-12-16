@@ -51,8 +51,8 @@ public class Dijkstra<N, E> {
 			
 			for(N node : g.getAdjoiningNodes(currN.getToNode())) {
 				double alt = currN.getDist() + g.getDistance(currN.getToNode(), node); //uzuppelnic
-				System.out.println("Distance:" + alt);
-				System.out.println("|" + node + "|");
+				//System.out.println("Distance:" + alt);
+				//System.out.println("|" + node + "|");
 				DNode v = dNodeMap.get(node);
 				if(v != null) {
 				if(alt < v.getDist()) {
@@ -79,10 +79,10 @@ public class Dijkstra<N, E> {
 		double min = Double.POSITIVE_INFINITY;
 		DNode<N> minDNode = null;
 		for(DNode<N> d : Q) {
-			System.out.println("min: " + min);
-			System.out.println("d.getDist" + d.getDist());
-			System.out.println(d.getDist() <= min);
-			System.out.println(d.visited);
+			//System.out.println("min: " + min);
+			//System.out.println("d.getDist" + d.getDist());
+			//System.out.println(d.getDist() <= min);
+			//System.out.println(d.visited);
 			if(d.getDist() <= min && !d.visited) {
 				min = d.getDist();
 				minDNode = d;

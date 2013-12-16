@@ -25,8 +25,8 @@ public class Uploader<N, E> {
 		String textLine = bufferedReader.readLine();
 		String[] splitted;
 		
-		//Graph g = new MatrixGraph<>();
-		Graph g = new ListGraph<>();
+		Graph g = new MatrixGraph<>();
+		//Graph g = new ListGraph<>();
 		do {
 			splitted = textLine.split("\t");
 			System.out.println("|" + splitted[0] + "|" + splitted[1] + "|" + splitted[2]);
