@@ -7,9 +7,9 @@ import java.nio.file.Paths;
 import java.util.BitSet;
 import java.util.HashMap;
 
-public class FileManager {
+public class FManager {
 
-    public static void read(Histogram h, String path) throws IOException {
+    public static void read(Hist h, String path) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
         char c;
         int i;
@@ -23,6 +23,7 @@ public class FileManager {
     public static int encodeBits(HashMap<Character, String> codeMap, String from, String to) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(from)));
         FileOutputStream writer = new FileOutputStream(to);
+        
         char c;
         int i;
         StringBuilder sb = new StringBuilder();
@@ -30,6 +31,7 @@ public class FileManager {
             c = (char) i;
             sb.append(codeMap.get(c));
         }
+        
         BitSet bs = fromString(sb.toString());
         byte[] bytes = toByteArray(bs);
         writer.write(bytes);

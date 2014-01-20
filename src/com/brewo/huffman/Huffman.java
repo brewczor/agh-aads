@@ -12,15 +12,18 @@ public class Huffman {
     private HashMap<Character, String> codeMap;
     private HashMap<String, Character> decodeMap;
 
-    public Huffman(Histogram h) {
+    public Huffman(Hist h) {
         codeMap = new HashMap<>();
         decodeMap = new HashMap<>();
         treeList = new LinkedList<>();
+        
+        //tworzenie drzewek
         for (Entry<Character, Integer> es : h.getHistogram().entrySet()) {
             HuffmanTree bt = new HuffmanTree();
             bt.setRoot(new Node(es.getKey(), es.getValue()));
             treeList.add(bt);
         }
+        
         Collections.sort(treeList, new ValueComparator());
     }
 
@@ -50,11 +53,13 @@ public class Huffman {
             HuffmanTree abt1 = this.peekLowestOccurenceTree();
             HuffmanTree abt2 = this.peekLowestOccurenceTree();
             HuffmanTree newBt = new HuffmanTree();
+            
             Node newNode = new Node();
             newNode.setOccurrences(abt1.getRoot().getOccurrences() + abt2.getRoot().getOccurrences());
             newNode.setRightChild(abt1.getRoot());
             newNode.setLeftChild(abt2.getRoot());
             newBt.setRoot(newNode);
+            
             treeList.add(newBt);
             Collections.sort(treeList, new ValueComparator());
         }

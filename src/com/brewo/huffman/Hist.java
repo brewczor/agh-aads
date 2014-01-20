@@ -6,12 +6,12 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-public class Histogram {
+public class Hist {
 
     private TreeMap<Character, Integer> hist;
     private HashMap<Character, Integer> base;
 
-    public Histogram() {
+    public Hist() {
         base = new HashMap<Character, Integer>();
     }
 
@@ -37,7 +37,7 @@ public class Histogram {
     public void printHistogram() {
         sort();
         for (Entry<Character, Integer> c : hist.entrySet()) {
-            System.out.println("Char: " + c.getKey() + "  Occurs: " + c.getValue());
+            System.out.println("ASCII: " + (int)c.getKey() + "|Char: " + c.getKey() + "|Occurs: " + c.getValue());
         }
     }
 

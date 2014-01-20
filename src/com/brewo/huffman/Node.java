@@ -1,6 +1,14 @@
 package com.brewo.huffman;
 
-public class Node {
+import java.io.Serializable;
+
+/**
+ * Representation of HuffmanTree Node
+ * 
+ * @author brewczor
+ *
+ */
+public class Node implements Serializable{
 
     private char c;
     private int occurrences;

@@ -1,6 +1,14 @@
 package com.brewo.huffman;
 
-public class HuffmanTree {
+import java.io.Serializable;
+
+/**
+ * HuffmanTree implementation
+ * 
+ * @author brewczor
+ *
+ */
+public class HuffmanTree implements Serializable{
 
     private Node root;
 
@@ -9,10 +17,12 @@ public class HuffmanTree {
     }
 
     private void printTree(int level, Node n) {
-        System.out.println("Level : " + level + ", Character : " + n.getC() + ", Occurences :" + n.getOccurrences());
+        System.out.println("Lvl: " + level + "|Char: " + n.getC() + "|Occ:" + n.getOccurrences());
+        
         if (n.getRightChild() != null) {
             printTree(level + 1, n.getRightChild());
         }
+        
         if (n.getLeftChild() != null) {
             printTree(level + 1, n.getLeftChild());
         }
